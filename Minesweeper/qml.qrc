@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>App/Minesweeper.qml</file>
+        <file>js/index.js</file>
+        <file>js/field.js</file>
+        <file>App/App.qml</file>
+    </qresource>
+</RCC>
