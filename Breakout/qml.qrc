@@ -1,0 +1,36 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>App/Appearance/Icons.qml</file>
+        <file>App/Appearance/Properties.qml</file>
+        <file>App/Appearance/qmldir</file>
+        <file>App/Appearance/Theme.qml</file>
+        <file>App/Breakout.qml</file>
+        <file>App/qmldir</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>assets/icons/collapse_content.png</file>
+        <file>assets/icons/expand_content.png</file>
+        <file>assets/icons/darkMode.png</file>
+        <file>assets/icons/lightMode.png</file>
+        <file>Generated/Effects/DropShadow/designer/DropShadowSpecificsDynamic.qml</file>
+        <file>Generated/Effects/DropShadow/BlurHelper.qml</file>
+        <file>Generated/Effects/DropShadow/bluritems.frag.qsb</file>
+        <file>Generated/Effects/DropShadow/bluritems.vert.qsb</file>
+        <file>Generated/Effects/DropShadow/dropshadow.frag.qsb</file>
+        <file>Generated/Effects/DropShadow/DropShadow.qml</file>
+        <file>Generated/Effects/DropShadow/dropshadow.vert.qsb</file>
+        <file>Generated/Effects/DropShadow/qmldir</file>
+        <file>Generated/Effects/qmldir</file>
+        <file>assets/icons/play.png</file>
+        <file>assets/icons/stop.png</file>
+        <file>App/GamePanel.qml</file>
+        <file>assets/icons/fav.png</file>
+        <file>assets/icons/medal.png</file>
+        <file>assets/arc/circle_big3.png</file>
+        <file>assets/arc/circle_mid7.png</file>
+        <file>assets/arc/circle_mid8.png</file>
+        <file>assets/arc/circle_small1_0.png</file>
+        <file>assets/arc/line7.png</file>
+        <file>assets/arc/line8.png</file>
+    </qresource>
+</RCC>

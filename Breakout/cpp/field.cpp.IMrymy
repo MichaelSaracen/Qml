@@ -1,0 +1,106 @@
+#include "field.h"
+
+#include <QPainter>
+
+Field::Field(QQuickItem *parent)
+    : QQuickPaintedItem( parent ),
+    m_color( 36, 40, 47 )
+{
+
+}
+
+void Field::paint(QPainter *painter)
+{
+    painter->fillRect(QRect(0,0,width(), height()), m_color);
+    drawTargets(painter);
+}
+
+/*!
+ * \brief Field::createField
+ * Erstellt das Feld mit den Items drauf.
+ */
+void Field::createField()
+{
+    qDebug() << "Field created";
+
+    const int ROWS               = 7;
+    const int HORIZONTAL_COUNT  = int(width() / 10);
+    const int ITEM_HEIGHT       = int(width() * 0.04);
+    const int SPACING           = 2;
+
+    // [!] --- Felder setzen
+    for ( int y = 0; y < ROWS; ++y ) {
+        for ( int x = 0; x < width(); x+=HORIZONTAL_COUNT ) {
+            TargetField *target = new TargetField(x + SPACING, (y * ITEM_HEIGHT) + SPACING, HORIZONTAL_COUNT - (SPACING*2), ITEM_HEIGHT- (SPACING * 2));
+            QColor clr = y == 0 || y == 1 ?
+                            QColor( 255, 97 , 96 ) : y == 2 || y == 3 ?
+                            QColor( 255, 224, 130 ) : QColor( 165, 214, 167 );
+            target->setColor(clr);
+            target->setBorderColor(clr.darker());
+            target->setScorePoint(clr);
+            qDebug() << target->scorePoint();
+            m_targets << target;
+        }
+    }
+
+    // [!] --- Paddel initialisieren
+    const int PADDEL_HEIGHT     = int( ITEM_HEIGHT * 0.5 );
+    const int PADDEL_WIDTH      = HORIZONTAL_COUNT;
+    const int PADDEL_X          = ( width() / 2 ) - ( PADDEL_WIDTH / 2 );
+    const int PADDEL_Y          = height() - PADDEL_HEIGHT - SPACING;
+    m_paddel = new Paddel( this, PADDEL_X , PADDEL_Y, PADDEL_WIDTH, PADDEL_HEIGHT );
+}
+
+/**
+ * @brief Field::restartGame
+ * Setzt das Spielfeld zurück.
+ */
+void Field::restartGame()
+{
+    if ( !m_targets.empty() && m_paddel ) {
+        qDebug() << "!m_targets.empty() && m_paddel";
+        m_targets.clear();
+        delete m_paddel;
+        m_paddel = nullptr;
+        update();
+    }
+}
+
+void Field::movePaddel(int x)
+{
+    if ( m_paddel ) {
+
+        m_paddel->moveBy( x );
+        update();
+    }
+}
+
+/**
+ * @brief Field::drawTargets
+ * Zeichnet die Felder auf dem Painter.
+ * @param painter
+ */
+void Field::drawTargets(QPainter *painter)
+{
+    if ( !m_targets.empty() ) {
+        for ( TargetField *target : std::as_const(m_targets) ) {
+            painter->setPen(QPen(target->borderColor(),1));
+            painter->setBrush(QBrush(target->color()));
+            QRect r = target->rect();
+            painter->drawRect(r.x(), r.y(), r.width(), r.height());
+        }
+
+        painter->setPen(QPen(m_paddel->borderColor(),1));
+        painter->setBrush(QBrush(m_paddel->color()));
+        painter->drawRect(m_paddel->rect());
+    }
+}
+
+
+/*!
+ * \brief Field::setColor
+ * Setzt die Farbe für das Spielfeld. Default - Wert ist weiß.
+ * \param color
+ */
+void Field::setColor( const QColor &color ) { m_color = color; emit colorChanged(); update(); }
+QColor Field::color( ) const { return m_color; }

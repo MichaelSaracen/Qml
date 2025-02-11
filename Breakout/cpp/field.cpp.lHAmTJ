@@ -1,0 +1,81 @@
+#include "field.h"
+
+#include <QPainter>
+
+Field::Field(QQuickItem *parent)
+    : QQuickPaintedItem( parent ),
+    m_color( 36, 40, 47 )
+{
+
+}
+
+void Field::paint(QPainter *painter)
+{
+    qDebug() << "painted";
+    painter->fillRect(QRect(0,0,width(), height()), m_color);
+    drawTargets(painter);
+}
+
+/*!
+ * \brief Field::createField
+ * Erstellt das Feld mit den Items drauf.
+ */
+void Field::createField()
+{
+    qDebug() << "Field created";
+
+    const int ROWS = 6;
+    const int HORIZONTAL_COUNT = int(width() / 10);
+    const int ITEM_HEIGHT = int(width() * 0.04);
+    const int SPACING = 2;
+    //qDebug() << width() * 0.002;
+
+    int MAXPOINTS = 3;
+
+    for ( int y = 0; y < ROWS; ++y ) {
+        qDebug() << MAXPOINTS - ( y * MAXPOINTS / ROWS);
+        for ( int x = 0; x < width(); x+=HORIZONTAL_COUNT ) {
+            TargetField *target = new TargetField(x + SPACING, (y * ITEM_HEIGHT) + SPACING, HORIZONTAL_COUNT - (SPACING*2), ITEM_HEIGHT- (SPACING * 2));
+            QColor clr = y == 0 || y == 1 ?
+                            QColor( 255, 97 , 96 ) : y == 2 || y == 3 ?
+                            QColor( 255, 224, 130 ) : QColor( 165, 214, 167 );
+            target->setColor(clr);
+            target->setBorderColor(clr.darker());
+            m_targets << target;
+        }
+    }
+}
+
+/**
+ * @brief Field::restartGame
+ * Setzt das Spielfeld zurück.
+ */
+void Field::restartGame()
+{
+    m_targets.clear();
+}
+
+/**
+ * @brief Field::drawTargets
+ * Zeichnet die Felder auf dem Painter.
+ * @param painter
+ */
+void Field::drawTargets(QPainter *painter)
+{
+    for ( TargetField *target : std::as_const(m_targets) ) {
+        painter->setPen(QPen(target->borderColor(),1));
+        painter->setBrush(QBrush(target->color()));
+        QRect r = target->rect();
+        painter->drawRect(r.x(), r.y(), r.width(), r.height());
+
+    }
+}
+
+
+/*!
+ * \brief Field::setColor
+ * Setzt die Farbe für das Spielfeld. Default - Wert ist weiß.
+ * \param color
+ */
+void Field::setColor( const QColor &color ) { m_color = color; emit colorChanged(); }
+QColor Field::color( ) const { return m_color; }

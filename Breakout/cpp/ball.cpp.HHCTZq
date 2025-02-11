@@ -1,0 +1,80 @@
+#include "ball.h"
+#include "field.h"
+
+
+Ball::Ball(Field *parent, int x, int y, int width, int height)
+    : AbstractShape( x, y, width, height ), m_parent(parent)
+{
+    dx = 2;
+    dy = -2;
+}
+
+Ball::~Ball() { qDebug() << "Ball - dtor - Ball removed"; }
+
+
+
+void Ball::move(QList<TargetField *> &targets)
+{
+    QRect r = rect();
+
+    int newX = r.x() + dx;
+    int maxX = m_parent->width() - r.width();
+    int newY = r.y() + dy;
+    int maxY = m_parent->height() - r.height();
+
+
+    if ( newX < 0  || newX > maxX ) {
+        dx = -dx;
+        newX = r.x() + dx;
+    }
+
+    if ( newY < 0 ) {
+        dy = -dy;
+        newY = r.top() + dy;
+    }
+
+    if ( collidesWidthPaddel() ) {
+        dy = -dy;
+        dx = -dy;
+        newX = r.x() + dx;
+        newY = r.top() + dy;
+    }
+    //if ( ) newX = maxX;
+    // if ( newY < 0 ) newY = -newY;
+    // if ( newY > maxY ) newY = maxY - newY ;
+
+    qDebug() << newY << maxY - newY;
+
+    //r.moveLeft( newX );
+    r.moveTop( newY );
+    setRect( r );
+}
+
+void Ball::collidesWith(QList<TargetField*> &targets)
+{
+    if ( targets.isEmpty() ) return;
+
+    QRect ballRect = rect();
+
+
+
+    auto it = std::remove_if(targets.begin(), targets.end(),
+                             [&](TargetField *target) {
+                                 if ( ballRect.intersects( target->rect() )) {
+                                     qDebug() << "Collision with TargetField";
+                                     m_parent->addScorePoints( target->scorePoint() );
+                                     emit m_parent->totalScoreChanged();
+                                     delete target;
+                                     return true;
+                                 }
+                                 return false;
+                             } );
+    targets.erase( it, targets.end() );
+}
+
+
+bool Ball::collidesWidthPaddel()
+{
+    if ( !m_parent->paddel() ) return false;
+    return rect().intersects( m_parent->paddel()->rect() );
+}

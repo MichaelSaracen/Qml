@@ -1,0 +1,6 @@
+module App
+
+Breakout 1.0 Breakout.qml
+GameField 1.0 GameField.qml
+GamePanel 1.0 GamePanel.qml
+import App.Appearance

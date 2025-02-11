@@ -1,0 +1,35 @@
+import QmlProject
+
+Project {
+    mainFile: "main.qml"
+
+    QmlFiles {
+        directory: "."
+    }
+
+    ImageFiles {
+        directory: "."
+    }
+
+    JavaScriptFiles {
+        directory: "."
+    }
+
+    Files {
+        filter: "qmldir"
+        directory: "."
+    }
+
+    Files {
+        filter: "*.conf"
+        files: ["qtquickcontrols2.conf"]
+    }
+
+    Environments {
+        QT_QUICK_CONTROLS_CONF: "qtquickcontrols2.conf"
+    }
+
+    importPaths: ["."]
+
+
+}

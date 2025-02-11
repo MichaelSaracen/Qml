@@ -1,0 +1,78 @@
+import QtQuick
+import QtQuick.Controls.Material
+
+import App.Appearance
+import QtQuick.Layouts 2.15
+
+Rectangle {
+    id: breakout
+    color: Theme.background
+    width: Properties.width
+    height: Properties.height
+    Material.theme: Theme.darkmode ? Material.Dark : Material.Light
+    property alias btnExpandWindow: btnExpandWindow
+
+    GameField {
+        id: gameField
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: gamePanel.top
+        width: 800
+        height: 500
+    }
+
+    Rectangle {
+        id: gamePanel
+        property string property: "This is a string"
+        height: 60
+        color: Theme.secondaryBackground
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+
+
+        RowLayout {
+            id: rowLayout
+            anchors.fill: parent
+
+            Item {
+                id: _item
+                width: 200
+                height: 200
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+            }
+
+            RoundButton {
+                id: btnDarMode
+                radius: 4
+                padding: 0
+                icon.source: Icons.colorMode
+                flat: true
+                checkable: true
+                Layout.rightMargin: 8
+                Layout.preferredWidth: 44
+                Layout.preferredHeight: 44
+                onClicked: {
+                    Theme.darkmode = !Theme.darkmode;
+                }
+            }
+
+            RoundButton {
+                id: btnExpandWindow
+                radius: 4
+                flat: true
+                Layout.rightMargin: 8
+                checkable: true
+                icon.source: checked ? Icons.collapseContent : Icons.expandContent
+                Layout.preferredHeight: 44
+                Layout.preferredWidth: 44
+                padding: 0
+            }
+
+
+        }
+    }
+
+}
