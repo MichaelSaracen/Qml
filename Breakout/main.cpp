@@ -6,6 +6,11 @@ int main(int argc, char *argv[])
 {
     qmlRegisterType<Field>("App", 1, 0, "GameField");
 
+    qreal b = 8;
+    qreal c = 13.6;
+
+    qDebug() << qRadiansToDegrees( qAsin(b / c) );
+
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
