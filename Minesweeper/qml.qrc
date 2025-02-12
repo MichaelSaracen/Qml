@@ -5,5 +5,26 @@
         <file>js/index.js</file>
         <file>js/field.js</file>
         <file>App/App.qml</file>
+        <file>assets/bg.jpg</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>assets/settings.png</file>
+        <file>assets/pause.png</file>
+        <file>assets/play.png</file>
+        <file>assets/stop.png</file>
+        <file>Generated/Effects/DropShadow/DropShadow.qml</file>
+        <file>Generated/Effects/DropShadow/designer/DropShadowSpecificsDynamic.qml</file>
+        <file>Generated/Effects/DropShadow/BlurHelper.qml</file>
+        <file>Generated/Effects/DropShadow/bluritems.frag.qsb</file>
+        <file>Generated/Effects/DropShadow/bluritems.vert.qsb</file>
+        <file>Generated/Effects/DropShadow/dropshadow.frag.qsb</file>
+        <file>Generated/Effects/DropShadow/dropshadow.vert.qsb</file>
+        <file>Generated/Effects/DropShadow/qmldir</file>
+        <file>Generated/Effects/qmldir</file>
+        <file>App/Icons.qml</file>
+        <file>App/qmldir</file>
+        <file>App/ControlPanel.qml</file>
+        <file>App/CounterLabel.qml</file>
+        <file>App/StartGameLabel.qml</file>
+        <file>App/GameDialog.qml</file>
     </qresource>
 </RCC>

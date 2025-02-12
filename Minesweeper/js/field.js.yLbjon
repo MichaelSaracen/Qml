@@ -42,25 +42,26 @@ class Field {
         let ctx = minesweeper.canvas.context;
         ctx.save();
         if ( this.visible ) {
-            ctx.fillStyle = 'transparent';
             if ( this.type === 'Mine' ) {
-                ctx.fillStyle = 'white';
-                ctx.font = '400 30px Arial'
-                ctx.fillText("💣", this.x + (this.width / 2) - 20 , this.y + (this.height / 2) +10);
+                ctx.fillStyle = "red";
             } else if ( this.mineCount === 0 ) {
-                ctx.fillStyle = '#7644ff';
-                ctx.fillRect( this.x + 2, this.y +2 , this.width - 4, this.height - 4 );
-
+                ctx.fillStyle = 'blue';
             } else {
-                ctx.font = '400 20px Arial'
+                ctx.fillStyle = 'transparent';
+            }
+            ctx.fillRect( this.x, this.y , this.width, this.height );
+            if ( this.mineCount > 0 && this.type !== "Mine") {
                 let clr = this.mineCount === 1 ? "#9bfdb3"
                                                : this.mineCount === 2 ? "#9cf7ff"
                                                                       : this.mineCount === 3 ? "#ffea9c" : "#ff9c9c"
                 ctx.fillStyle = clr;
-                ctx.fillText(this.mineCount, this.x + (this.width / 2) - 5, this.y + (this.height / 2) +5);
-
+                ctx.fillText(this.mineCount, this.x + this.width / 2, this.y + this.height / 2);
             }
-        }
+        } /*else {
+            ctx.fillStyle = '#d0d0d0'
+            ctx.fillRect( this.x, this.y , this.width, this.height );
+        }*/
+
         ctx.restore();
     }
 }

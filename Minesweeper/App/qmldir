@@ -1,0 +1,6 @@
+module App
+
+App 1.0 App.qml
+singleton Icons 1.0 Icons.qml
+Minesweeper 1.0 Minesweeper.qml
+StartGameLabel 1.0 StartGameLabel.qml
