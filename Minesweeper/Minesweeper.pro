@@ -22,3 +22,6 @@ HEADERS += \
 DISTFILES += \
     Minesweeper.qmlproject
 
+DISTFILES += \
+    Minesweeper.qmlproject
+

@@ -13,6 +13,11 @@ Window {
         source: Icons.bg
     }
 
+    Image {
+        anchors.fill: parent
+        source: "qrc:/assets/bg.jpg"
+    }
+
     App {
         id: app
         anchors.fill: parent

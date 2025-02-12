@@ -20,11 +20,14 @@
         <file>Generated/Effects/DropShadow/dropshadow.vert.qsb</file>
         <file>Generated/Effects/DropShadow/qmldir</file>
         <file>Generated/Effects/qmldir</file>
+<<<<<<< HEAD
         <file>App/Icons.qml</file>
         <file>App/qmldir</file>
         <file>App/ControlPanel.qml</file>
         <file>App/CounterLabel.qml</file>
         <file>App/StartGameLabel.qml</file>
         <file>App/GameDialog.qml</file>
+=======
+>>>>>>> 54ab01889fb3158f3c4c160874b13733c2052f28
     </qresource>
 </RCC>

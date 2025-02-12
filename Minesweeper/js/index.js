@@ -70,6 +70,75 @@ function findField( mouseX, mouseY ) {
 }
 
 
+<<<<<<< HEAD
+=======
+
+function showMines( visible = true ) {
+    for ( const field of minesweeper.fields ) {
+        if ( field.type === 'Mine' ) {
+            field.visible = visible;
+        }
+    }
+    minesweeper.mineTimer.running = visible;
+}
+
+function allSelected ( ) {
+    let noMines = minesweeper.fields.filter( ( field ) => field.type !== 'Mine' );
+    let selected = false;
+
+    for ( const field of noMines ) {
+        if (!field.selected ) return false
+    }
+    return true;
+}
+
+function onFieldSelected( field ) {
+    if ( !field.selected  ) field.selected = true;
+
+
+    minesweeper.selectedField = field;
+    setMines( field );
+
+    // [!] --- Field Typen Prüfung und Aufdeckungen
+    if ( field.type === 'Mine' ) {
+        showMines();
+    } else if ( field.type === 'Field' ) {
+        field.visible = true;
+    } else if ( field.type === 'None'){
+        floodFill(field)
+    }
+
+    if ( allSelected( ) ) {
+        // [!] --- Signal triggern wenn alle Felder ausgewählt wurden
+        minesweeper.allSelected( );
+    }
+
+    minesweeper.canvas.requestPaint();
+}
+
+/**
+ * Zeichnet alles neu. Löscht zuvor das Canvas
+ */
+function redraw() {
+    minesweeper.canvas.context.clearRect( 0, 0, minesweeper.canvas.width, minesweeper.canvas.height );
+    minesweeper.canvas.context.fillStyle = '#242329';
+    minesweeper.canvas.context.fillRect( 0, 0, minesweeper.canvas.width, minesweeper.canvas.height );
+
+    drawFields()
+
+}
+
+/**
+ * Setzt die Einstellungen des Minesweepers zurück
+ */
+function resetGame() {
+    minesweeper.firstClickFree = true;
+    minesweeper.started = false;
+    clearFields();
+    minesweeper.canvas.requestPaint();
+}
+
+>>>>>>> 54ab01889fb3158f3c4c160874b13733c2052f28
 function floodFill(field) {
     let queue = [field];
     let visited = new Set();
