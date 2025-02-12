@@ -43,19 +43,15 @@ class Field {
         ctx.save();
         if ( this.visible ) {
             if ( this.type === 'Mine' ) {
-                ctx.fillStyle = 'transparent';
-                ctx.fillRect( this.x, this.y , this.width, this.height );
-                ctx.fillStyle = 'white';
-                ctx.font = '400 30px Arial'
-                ctx.fillText("💣", this.x + (this.width / 2) - 20 , this.y + (this.height / 2) +10);
+                //ctx.fillStyle = "red";  // 💣
+                ctx.fillStyle = clr;
+                ctx.fillText("💣", this.x + (this.width / 2) - 5, this.y + (this.height / 2) +5);
             } else if ( this.mineCount === 0 ) {
-                ctx.fillStyle = Qt.lighter("#242329");
-                ctx.fillRect( this.x, this.y , this.width, this.height );
+                ctx.fillStyle = 'blue';
             } else {
                 ctx.fillStyle = 'transparent';
-                ctx.fillRect( this.x, this.y , this.width, this.height );
             }
-
+            ctx.fillRect( this.x, this.y , this.width, this.height );
             if ( this.mineCount > 0 && this.type !== "Mine") {
                 ctx.font = '400 20px Arial'
                 let clr = this.mineCount === 1 ? "#9bfdb3"

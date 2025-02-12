@@ -41,8 +41,8 @@ function clearFields ( ) {
  */
 function drawFields (  ) {
     for ( const field of minesweeper.fields ) {
-        minesweeper.canvas.context.strokeStyle = '#7644ff';
         minesweeper.canvas.context.fillStyle = '#242329';
+        minesweeper.canvas.context.strokeStyle = '#7644ff';
         minesweeper.canvas.context.fillRect( field.x, field.y , field.width, field.height );
         minesweeper.canvas.context.strokeRect( field.x, field.y , field.width, field.height );
 
@@ -108,8 +108,7 @@ function onFieldSelected( field ) {
  */
 function redraw() {
     minesweeper.canvas.context.clearRect( 0, 0, minesweeper.canvas.width, minesweeper.canvas.height );
-    minesweeper.canvas.context.fillStyle = '#242329';
-    minesweeper.canvas.context.fillRect( 0, 0, minesweeper.canvas.width, minesweeper.canvas.height );
+
 
     drawFields()
 
@@ -180,7 +179,7 @@ function setMines ( firstClickedField ) {
 
     minesweeper.firstClickFree = false;
 
-    let mineCount = minesweeper.bombCount;
+    let mineCount = 5;
     let availableFields = minesweeper.fields.filter( (field) => field !== firstClickedField );
 
     while ( mineCount > 0 ) {

@@ -18,3 +18,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS +=
 
+DISTFILES += \
+    Minesweeper.qmlproject
+

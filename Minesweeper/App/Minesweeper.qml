@@ -12,14 +12,18 @@ Rectangle {
     property alias canvas: canvas
     property alias mineTimer: mineTimer
     property int cellSize : 50
-    property int rows: controlPanel.rowCountSpinBox.value
-    property int colums: controlPanel.columnCountSpinBox.value
+    property int rows: rowCountSpinBox.value
+    property int colums: columnCountSpinBox.value
     property var fields: []
     property bool started: false
     property bool firstClickFree: true
     property var selectedField: null
+    property int bombCount: parseInt((rows * colums) * 0.2)
+    property int points: (rows * colums) - bombCount
 
+    Component.onCompleted: { console.log(points) }
     signal fieldSelected( field: var )
+    signal allSelected( )
 
     Canvas {
         id: canvas
@@ -33,16 +37,19 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
-        enabled: started
+        enabled: minesweeper.started
 
         onClicked: { MS.findField(mouseX, mouseY) }
     }
 
     onFieldSelected: (field) => { MS.onFieldSelected(field); }
+    onAllSelected: {
+        console.log("finished");
+    }
 
     Timer {
         id: mineTimer
-        interval: 1000
+        interval: spinBoxTimer.value
         running: false
         repeat: false
         onTriggered: {
