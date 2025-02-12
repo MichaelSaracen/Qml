@@ -41,8 +41,8 @@ function clearFields ( ) {
  */
 function drawFields (  ) {
     for ( const field of minesweeper.fields ) {
-         minesweeper.canvas.context.strokeRect( field.x, field.y , field.width, field.height );
-         field.draw();
+        minesweeper.canvas.context.strokeRect( field.x, field.y , field.width, field.height );
+        field.draw();
     }
 }
 
@@ -56,10 +56,38 @@ function findField( mouseX, mouseY ) {
 
 
 
+function showMines( visible = true ) {
+    for ( const field of minesweeper.fields ) {
+        if ( field.type === 'Mine' ) {
+            field.visible = visible;
+        }
+    }
+    minesweeper.mineTimer.running = visible;
+}
+
+function allSelected ( ) {
+    let selected = false;
+    for ( const field of minesweeper.fields ) {
+        if ( field.type === 'Mine') continue;
+
+    }
+
+
+}
+
 function onFieldSelected( field ) {
-    minesweeper.pauseBySelected = true; // Startet den Timer sodass nicht gewählt werden kann.
+
     minesweeper.selectedField = field;
     setMines( field );
+
+    if ( field.type === 'Mine' ) {
+        showMines();
+    } else if ( field.type === 'Field' ) {
+        field.visible = true;
+    } else if ( field.type === 'None'){
+        floodFill(field)
+    }
+    console.log(allSelected())
     minesweeper.canvas.requestPaint();
 }
 
@@ -84,6 +112,31 @@ function resetGame() {
     minesweeper.canvas.requestPaint();
 }
 
+function floodFill(field) {
+    let queue = [field];
+    let visited = new Set();
+
+    while (queue.length > 0) {
+        let current = queue.shift();
+
+        if (current.visible || visited.has(current)) continue;
+
+        current.visible = true;
+        visited.add(current);
+
+        if (current.mineCount > 0) continue;
+
+        let neighbors = getNeightbors(current);
+        for (const neighbor of neighbors) {
+            if ( neighbor.type === "Field" ) continue;
+            if (!visited.has(neighbor) && !neighbor.visible) {
+                queue.push(neighbor);
+            }
+        }
+    }
+}
+
+
 
 function getNeightbors ( field ) {
     let neighbors = [];
@@ -91,20 +144,29 @@ function getNeightbors ( field ) {
         let dx = Math.abs(otherField.x - field.x);
         let dy = Math.abs(otherField.y - field.y);
 
-        // Überprüfe, ob das Feld in einem 3x3-Quadrat um die Mine liegt (aber nicht die Mine selbst)
         if (dx <= minesweeper.cellSize && dy <= minesweeper.cellSize && otherField !== field) {
             neighbors.push(otherField);
         }
     }
-    return neighbors;
 
+    return neighbors;
+}
+
+function initFieldTypes() {
+    for ( const field of minesweeper.fields ) {
+        if( field.type === 'Mine') continue;
+        if ( field.mineCount > 0 ) {
+            field.type = 'Field';
+        }
+    }
 }
 
 function setMines ( firstClickedField ) {
     if ( !minesweeper.firstClickFree ) return;
+
     minesweeper.firstClickFree = false;
 
-    let mineCount = 10;
+    let mineCount = 5;
     let availableFields = minesweeper.fields.filter( (field) => field !== firstClickedField );
 
     while ( mineCount > 0 ) {
@@ -116,10 +178,10 @@ function setMines ( firstClickedField ) {
         mineCount --;
 
         let neightbors = getNeightbors( field );
-        for ( const neightbor of neightbors ) {
+        for ( const neightbor of neightbors )
             neightbor.mineCount ++;
-        }
     }
+    initFieldTypes();
 }
 
 /**

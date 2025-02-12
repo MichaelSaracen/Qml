@@ -10,14 +10,14 @@ Rectangle {
     anchors.centerIn: parent
 
     property alias canvas: canvas
+    property alias mineTimer: mineTimer
     property int cellSize : 50
     property int rows: controlPanel.rowCountSpinBox.value
     property int colums: controlPanel.columnCountSpinBox.value
     property var fields: []
     property bool started: false
-    property bool pauseBySelected: false
-    property var selectedField: null
     property bool firstClickFree: true
+    property var selectedField: null
 
     signal fieldSelected( field: var )
 
@@ -33,7 +33,7 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
-        enabled: started && !pauseBySelected
+        enabled: started
 
         onClicked: { MS.findField(mouseX, mouseY) }
     }
@@ -41,18 +41,18 @@ Rectangle {
     onFieldSelected: (field) => { MS.onFieldSelected(field); }
 
     Timer {
-        id: selectionTimer
-        interval: 200
-        running: pauseBySelected
+        id: mineTimer
+        interval: 1000
+        running: false
         repeat: false
         onTriggered: {
             if ( minesweeper.selectedField ) {
-                minesweeper.selectedField.selected = false;
                 minesweeper.selectedField = null;
-                minesweeper.pauseBySelected = false;
+                MS.showMines(false);
                 minesweeper.canvas.requestPaint();
+                console.log("dd")
+                //minesweeper.mineSelected = false;
             }
-            console.log("Running")
 
         }
     }

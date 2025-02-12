@@ -15,45 +15,59 @@ Rectangle {
         id: minesweeper
     }
 
-    RowLayout {
-        id: controlPanel
-        anchors.horizontalCenter:  minesweeper.horizontalCenter
-        anchors.top: minesweeper.bottom
-        anchors.topMargin: 16
 
+    Rectangle {
+        id: controlPanel
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        height: 80
         property alias rowCountSpinBox: rowCountSpinBox
         property alias columnCountSpinBox: columnCountSpinBox
 
-        Button {
-            id: clearButton
-            text: "Reset"
-            onClicked: {
-                MS.resetGame();
-            }
-        }
-        Button {
-            id: startButton
-            text: "Start"
-            onClicked: {
-                MS.startGame();
-            }
-        }
-        SpinBox {
-            id: rowCountSpinBox
-            enabled: !minesweeper.started
-            from: 3
-            to: 20
-            value: 7
-            //onValueChanged: MS.sizeChanged()
-        }
+        RowLayout {
+            anchors.fill: parent
 
-        SpinBox {
-            id: columnCountSpinBox
-            enabled: !minesweeper.started
-            from: 3
-            to: 20
-            value: 7
-            //onValueChanged: MS.sizeChanged()
+
+            Item { Layout.preferredWidth: rowCountSpinBox.implicitWidth }
+            Item { Layout.preferredWidth: rowCountSpinBox.implicitWidth }
+            Item { Layout.fillWidth: true }
+
+            Button {
+                id: clearButton
+                text: "Reset"
+                onClicked: {
+                    MS.resetGame();
+                }
+            }
+            Button {
+                id: startButton
+                text: "Start"
+                onClicked: {
+                    MS.startGame();
+                }
+            }
+            Item { Layout.fillWidth: true }
+            SpinBox {
+                id: rowCountSpinBox
+                enabled: !minesweeper.started
+                from: 3
+                to: 20
+                editable: true
+                value: 7
+                onValueChanged: focus = false
+                //onValueChanged: MS.sizeChanged()
+            }
+
+            SpinBox {
+                id: columnCountSpinBox
+                enabled: !minesweeper.started
+                from: 3
+                to: 20
+                editable: true
+                value: 7
+                //onValueChanged: MS.sizeChanged()
+            }
         }
     }
 

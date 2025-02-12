@@ -5,9 +5,9 @@ class Field {
         this.width  = width;
         this.height = height;
         this.selected = false;
-        this.visible = true;
+        this.visible = false;
 
-        this.type = '';
+        this.type = 'None';
         this.mineCount = 0;
     }
 
@@ -45,17 +45,20 @@ class Field {
             if ( this.type === 'Mine' ) {
                 ctx.fillStyle = "red";
             } else if ( this.mineCount === 0 ) {
-                ctx.fillStyle = '#ddd';
+                ctx.fillStyle = 'blue';
             } else {
                 ctx.fillStyle = '#bbb';
             }
             ctx.fillRect( this.x, this.y , this.width, this.height );
-
             if ( this.mineCount > 0 && this.type !== "Mine") {
                 ctx.fillStyle = "black";
                 ctx.fillText(this.mineCount, this.x + this.width / 2, this.y + this.height / 2);
             }
-        }
+        } /*else {
+            ctx.fillStyle = '#d0d0d0'
+            ctx.fillRect( this.x, this.y , this.width, this.height );
+        }*/
+
         ctx.restore();
     }
 }
