@@ -9,8 +9,9 @@ Project {
     }
 
 
+
     JavaScriptFiles {
-        directory: "."
+        directory: "js"
     }
 
 

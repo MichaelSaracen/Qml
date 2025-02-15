@@ -1,0 +1,133 @@
+const sources = [
+                  "../assets/cards/tile000.png",
+                  "../assets/cards/tile001.png",
+                  "../assets/cards/tile002.png",
+                  "../assets/cards/tile003.png",
+                  "../assets/cards/tile004.png",
+                  "../assets/cards/tile005.png",
+                  "../assets/cards/tile006.png",
+                  "../assets/cards/tile007.png",
+                  "../assets/cards/tile008.png",
+                  "../assets/cards/tile010.png",
+                  "../assets/cards/tile011.png",
+                  "../assets/cards/tile012.png",
+                  "../assets/cards/tile013.png",
+                  "../assets/cards/tile014.png",
+                  "../assets/cards/tile015.png",
+                  "../assets/cards/tile016.png",
+                  "../assets/cards/tile017.png",
+                  "../assets/cards/tile018.png",
+                  "../assets/cards/tile020.png",
+                  "../assets/cards/tile021.png",
+                  "../assets/cards/tile022.png",
+                  "../assets/cards/tile023.png",
+                  "../assets/cards/tile024.png",
+                  "../assets/cards/tile025.png",
+                  "../assets/cards/tile026.png",
+                  "../assets/cards/tile027.png",
+                  "../assets/cards/tile028.png",
+                  "../assets/cards/tile030.png",
+                  "../assets/cards/tile031.png",
+                  "../assets/cards/tile032.png",
+                  "../assets/cards/tile033.png",
+                  "../assets/cards/tile034.png",
+                  "../assets/cards/tile035.png",
+                  "../assets/cards/tile036.png",
+                  "../assets/cards/tile037.png",
+                  "../assets/cards/tile038.png",
+                  "../assets/cards/tile040.png",
+                  "../assets/cards/tile041.png",
+                  "../assets/cards/tile042.png",
+                  "../assets/cards/tile043.png",
+                  "../assets/cards/tile044.png",
+                  "../assets/cards/tile045.png",
+                  "../assets/cards/tile046.png",
+                  "../assets/cards/tile047.png",
+                  "../assets/cards/tile048.png",
+                  "../assets/cards/tile050.png",
+                  "../assets/cards/tile051.png",
+                  "../assets/cards/tile052.png",
+                  "../assets/cards/tile053.png",
+                  "../assets/cards/tile054.png",
+                  "../assets/cards/tile055.png",
+                  "../assets/cards/tile056.png",
+                  "../assets/cards/tile057.png",
+                  "../assets/cards/tile058.png",
+                  "../assets/cards/tile060.png",
+                  "../assets/cards/tile061.png",
+                  "../assets/cards/tile062.png",
+                  "../assets/cards/tile063.png",
+                  "../assets/cards/tile064.png",
+                  "../assets/cards/tile065.png",
+                  "../assets/cards/tile066.png",
+                  "../assets/cards/tile067.png",
+                  "../assets/cards/tile068.png",
+                  "../assets/cards/tile070.png",
+                  "../assets/cards/tile071.png",
+                  "../assets/cards/tile072.png",
+                  "../assets/cards/tile073.png",
+                  "../assets/cards/tile074.png",
+                  "../assets/cards/tile075.png",
+                  "../assets/cards/tile076.png",
+                  "../assets/cards/tile077.png",
+                  "../assets/cards/tile078.png",
+                  "../assets/cards/tile080.png",
+                  "../assets/cards/tile081.png",
+                  "../assets/cards/tile082.png",
+                  "../assets/cards/tile083.png",
+                  "../assets/cards/tile084.png",
+                  "../assets/cards/tile085.png",
+                  "../assets/cards/tile086.png",
+                  "../assets/cards/tile087.png",
+                  "../assets/cards/tile088.png",
+                  "../assets/cards/tile090.png",
+                  "../assets/cards/tile091.png",
+                  "../assets/cards/tile092.png",
+                  "../assets/cards/tile093.png",
+                  "../assets/cards/tile094.png",
+                  "../assets/cards/tile095.png",
+                  "../assets/cards/tile096.png",
+                  "../assets/cards/tile097.png",
+                  "../assets/cards/tile098.png",
+                  "../assets/cards/tile100.png",
+                  "../assets/cards/tile101.png",
+                  "../assets/cards/tile102.png",
+                  "../assets/cards/tile103.png",
+                  "../assets/cards/tile104.png",
+                  "../assets/cards/tile105.png",
+                  "../assets/cards/tile106.png",
+                  "../assets/cards/tile107.png",
+                  "../assets/cards/tile108.png",
+                  "../assets/cards/tile110.png",
+                  "../assets/cards/tile111.png",
+                  "../assets/cards/tile112.png",
+                  "../assets/cards/tile113.png",
+                  "../assets/cards/tile114.png",
+                  "../assets/cards/tile115.png",
+                  "../assets/cards/tile116.png",
+                  "../assets/cards/tile117.png",
+                  "../assets/cards/tile118.png",
+              ]
+
+function cardSources(cardAmount) {
+    let amount = cardAmount / 2;
+    let rndIndex = Math.floor(Math.random() * (sources.length - amount));
+    let selectedCards = sources.slice(rndIndex, rndIndex + amount);
+
+    let cardObjects = [];
+
+    for (let i = 0; i < selectedCards.length; i++) {
+        cardObjects.push({ source: selectedCards[i], pairId: i, selected: false });
+        cardObjects.push({ source: selectedCards[i], pairId: i, selected: false });
+    }
+
+    for (let a = cardObjects.length - 1; a > 0; a--) {
+        let j = Math.floor(Math.random() * (a + 1));
+        [cardObjects[a], cardObjects[j]] = [cardObjects[j], cardObjects[a]]; // Swap
+    }
+
+    return cardObjects;
+}
+
+
+
