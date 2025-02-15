@@ -17,14 +17,11 @@ Project {
     }
 
     Files {
-<<<<<<< HEAD
         filter: "*.mp3;*.wav"
         directory: "."
     }
 
     Files {
-=======
->>>>>>> 54ab01889fb3158f3c4c160874b13733c2052f28
         filter: 'qmldir'
         directory: '.'
     }
@@ -34,12 +31,9 @@ Project {
         files: 'qtquickcontrols2.conf'
     }
 
-<<<<<<< HEAD
     Environment  {
         QT_QUICK_CONTROLS_CONF: "qtquickcontrols2.conf"
     }
 
-=======
->>>>>>> 54ab01889fb3158f3c4c160874b13733c2052f28
     importPaths: ["."]
 }

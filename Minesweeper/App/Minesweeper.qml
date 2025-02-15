@@ -19,7 +19,6 @@ Rectangle {
     property bool started: false
     property bool firstClickFree: true
     property var selectedField: null
-<<<<<<< HEAD
     property int bombCount: 0
     property int maxPoints: (rows * colums) - bombCount
     property int score: 0
@@ -38,14 +37,12 @@ Rectangle {
         }
     }
 
-=======
     property int bombCount: parseInt((rows * colums) * 0.2)
     property int points: (rows * colums) - bombCount
 
     Component.onCompleted: { console.log(points) }
     signal fieldSelected( field: var )
     signal allSelected( )
->>>>>>> 54ab01889fb3158f3c4c160874b13733c2052f28
 
     Canvas {
         id: canvas
@@ -59,16 +56,12 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
-<<<<<<< HEAD
         enabled: minesweeper.started && !mineTimer.running && startButton.checked
-=======
         enabled: minesweeper.started
->>>>>>> 54ab01889fb3158f3c4c160874b13733c2052f28
 
         onClicked: { MS.findField(mouseX, mouseY) }
     }
 
-<<<<<<< HEAD
     onFieldSelected: (field) => { MS.onFieldSelected(field);}
     onAllSelected: {
         controlPanel.timer.stop();
@@ -82,11 +75,9 @@ Rectangle {
 
     onGameOver: {
         openGameDialog("GameOver!", `Game is over. Out of time !`, () =>  MS.resetGame() );
-=======
     onFieldSelected: (field) => { MS.onFieldSelected(field); }
     onAllSelected: {
         console.log("finished");
->>>>>>> 54ab01889fb3158f3c4c160874b13733c2052f28
     }
 
     Timer {
