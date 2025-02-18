@@ -1,3 +1,7 @@
+# KinoManager
+
+![kino.gif](KinoManager/kino.gif)
+
 # Breakout
 
 ![breakout.gif](Breakout/docs/breakout.gif)
