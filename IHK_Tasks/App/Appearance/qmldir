@@ -1,0 +1,5 @@
+Module App.Appearance
+
+
+singleton Icons 1.0 Icons.qml
+singleton Properties 1.0 Properties.qml

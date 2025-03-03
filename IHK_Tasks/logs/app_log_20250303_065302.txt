@@ -1,0 +1,8 @@
+[2025-03-03 06:53:02] [DEBUG] --------------------------- (qrc:/App/QAndAs.qml:379)
+[2025-03-03 06:53:02] [DEBUG] Richtige Antwort: Netzwerk-Antowrt 1 (qrc:/App/QAndAs.qml:380)
+[2025-03-03 06:53:02] [DEBUG] Deine Antwort: qwdsa (qrc:/App/QAndAs.qml:381)
+[2025-03-03 06:53:02] [DEBUG] --------------------------- (qrc:/App/QAndAs.qml:382)
+[2025-03-03 06:53:04] [DEBUG] --------------------------- (qrc:/App/QAndAs.qml:379)
+[2025-03-03 06:53:04] [DEBUG] Richtige Antwort: Netzwerk-Antowrt 1 (qrc:/App/QAndAs.qml:380)
+[2025-03-03 06:53:04] [DEBUG] Deine Antwort: asdsasd (qrc:/App/QAndAs.qml:381)
+[2025-03-03 06:53:04] [DEBUG] --------------------------- (qrc:/App/QAndAs.qml:382)

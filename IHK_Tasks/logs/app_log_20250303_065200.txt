@@ -1,0 +1,4 @@
+[2025-03-03 06:52:00] [DEBUG] Richtige Antwort: Netzwerk-Antowrt 1 (qrc:/App/QAndAs.qml:379)
+[2025-03-03 06:52:00] [DEBUG] Deine Antwort: asdqw (qrc:/App/QAndAs.qml:380)
+[2025-03-03 06:52:12] [DEBUG] Richtige Antwort: Netzwerk-Antowrt 1 (qrc:/App/QAndAs.qml:379)
+[2025-03-03 06:52:12] [DEBUG] Deine Antwort: asdqw (qrc:/App/QAndAs.qml:380)

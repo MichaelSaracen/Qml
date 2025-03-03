@@ -1,0 +1,44 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>App/Appearance/Properties.qml</file>
+        <file>App/Appearance/qmldir</file>
+        <file>App/qmldir</file>
+        <file>App/App.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>App/Components/NavButton.qml</file>
+        <file>assets/add.png</file>
+        <file>assets/card.png</file>
+        <file>assets/close.png</file>
+        <file>assets/edit.png</file>
+        <file>assets/questart.png</file>
+        <file>assets/question.png</file>
+        <file>assets/setings.png</file>
+        <file>assets/tasks.png</file>
+        <file>assets/update.png</file>
+        <file>App/StartScreen.qml</file>
+        <file>App/Appearance/Icons.qml</file>
+        <file>assets/back.png</file>
+        <file>assets/forward.png</file>
+        <file>App/Components/SubjectChoiseDelegate.qml</file>
+        <file>App/SubjectChoise.qml</file>
+        <file>App/Components/QAndAButton.qml</file>
+        <file>assets/first.png</file>
+        <file>assets/home.png</file>
+        <file>assets/last.png</file>
+        <file>App/QAndAs.qml</file>
+        <file>App/SettingsScreen.qml</file>
+        <file>App/Components/EditSubjectDelegate.qml</file>
+        <file>App/Components/ListAddQandA.qml</file>
+        <file>App/Components/AddQAndA.qml</file>
+        <file>App/Components/EditQAndADelegate.qml</file>
+        <file>App/Dialogs/EditQAndADialog.qml</file>
+        <file>App/Dialogs/YesNoDialog.qml</file>
+        <file>Generated/Effects/qmldir</file>
+        <file>Generated/Effects/ColorOverlay/qmldir</file>
+        <file>Generated/Effects/ColorOverlay/ColorOverlay.qml</file>
+        <file>Generated/Effects/ColorOverlay/ColorOverlay.frag.qsb</file>
+        <file>Generated/Effects/ColorOverlay/ColorOverlay.vert.qsb</file>
+        <file>Generated/Effects/ColorOverlay/designer/ColorOverlaySpecificsDynamic.qml</file>
+    </qresource>
+</RCC>
